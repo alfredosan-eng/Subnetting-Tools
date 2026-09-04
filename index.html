@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Subnetting Tools — IPv4 Prefix & Subnetting Lab</title>
+<meta name="description" content="Herramientas interactivas de CIDR, máscaras IPv4, binario y subnetting.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brandMark"><span>/</span></div>
+    <div>
+      <strong>SUBNETTING TOOLS</strong>
+      <small>Interactive IPv4 Prefix & Subnetting Lab</small>
+    </div>
+  </div>
+  <a class="backLink" href="https://alfredosan-eng.github.io/CIDR-Visualizer/" target="_blank" rel="noopener">CIDR VISUALIZER ↗</a>
+</header>
+
+<main>
+  <section class="intro">
+    <div>
+      <div class="eyebrow"><i></i> NETWORKING TOOLKIT</div>
+      <h1>Entiende el <span>/</span>. Convierte. Calcula.</h1>
+      <p>Cuatro herramientas pequeñas y directas para explorar prefijos, visualizar los bits, convertir representaciones IPv4 y resolver subnetting paso a paso.</p>
+    </div>
+    <div class="quickNav" aria-label="Herramientas">
+      <button data-scroll="explore">01 <span>EXPLORE PREFIX</span></button>
+      <button data-scroll="understand">02 <span>UNDERSTAND THE / PREFIX</span></button>
+      <button data-scroll="convert">03 <span>CONVERT</span></button>
+      <button data-scroll="subnet">04 <span>SUBNETTING TOOL</span></button>
+    </div>
+  </section>
+
+  <section class="toolGrid">
+    <!-- 1 -->
+    <article class="toolCard cardBlue" id="explore">
+      <div class="cardHead">
+        <div><div class="kicker">01</div><h2>EXPLORE PREFIX</h2><small>IPv4 · /0 → /32</small></div>
+        <div class="dot blue"></div>
+      </div>
+      <div class="addressRow">
+        <input id="exploreIp" value="192.168.1.0" aria-label="Dirección IPv4">
+        <span>/</span>
+        <div class="prefixBox"><button id="exploreMinus" aria-label="Reducir prefijo">−</button><strong id="explorePrefix">24</strong><button id="explorePlus" aria-label="Aumentar prefijo">+</button></div>
+      </div>
+      <input id="exploreSlider" class="range" type="range" min="0" max="32" value="24" aria-label="Prefijo IPv4">
+      <div class="rangeLabels"><span>/0</span><strong id="exploreCenter">/24</strong><span>/32</span></div>
+      <div class="bitBar" id="exploreBitBar"></div>
+      <div class="statGrid" id="exploreStats"></div>
+      <div class="miniBinary" id="exploreMaskBinary"></div>
+    </article>
+
+    <!-- 2 -->
+    <article class="toolCard cardGreen" id="understand">
+      <div class="cardHead">
+        <div><div class="kicker">02</div><h2>UNDERSTAND THE / PREFIX</h2><small>La frontera entre red y host</small></div>
+        <div class="dot green"></div>
+      </div>
+      <p class="cardText">IPv4 tiene <b>32 bits</b>. El número después de <b>/</b> indica cuántos de esos bits pertenecen al prefijo de red.</p>
+      <div class="splitDiagram" id="splitDiagram"></div>
+      <div class="prefixTableWrap">
+        <table class="prefixTable">
+          <thead><tr><th>PREFIX</th><th>NETWORK</th><th>HOST</th><th>ADDRESSES</th><th>USABLE</th></tr></thead>
+          <tbody id="prefixRows"></tbody>
+        </table>
+      </div>
+      <div class="whyBox" id="whyBox"></div>
+    </article>
+
+    <!-- 3 -->
+    <article class="toolCard cardYellow" id="convert">
+      <div class="cardHead">
+        <div><div class="kicker">03</div><h2>CONVERT</h2><small>Decimal · Binary · Prefix · Mask</small></div>
+        <div class="dot yellow"></div>
+      </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="decBin">DECIMAL → BINARY</button>
+        <button class="tab" data-tab="binDec">BINARY → DECIMAL</button>
+      </div>
+      <div class="convertPane active" id="decBinPane">
+        <div class="convertRows" id="decimalRows"></div>
+        <div class="bitWeights"><span>128</span><span>64</span><span>32</span><span>16</span><span>8</span><span>4</span><span>2</span><span>1</span></div>
+      </div>
+      <div class="convertPane" id="binDecPane">
+        <label class="fieldLabel">BINARIO (8 bits)<input id="binaryInput" value="11000000" maxlength="8" inputmode="numeric"></label>
+        <div class="binaryVisual" id="binaryVisual"></div>
+        <div class="formula" id="binaryFormula"></div>
+      </div>
+      <div class="prefixMaskBox">
+        <div class="boxTitle">PREFIX → MASK</div>
+        <div class="maskRow"><span>/</span><input id="maskPrefix" type="number" min="0" max="32" value="26"><span>→</span><button id="maskCalc">CALCULATE</button></div>
+        <div class="maskBinary" id="maskBinary"></div>
+        <div class="maskDecimal" id="maskDecimal"></div>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="toolCard cardRed" id="subnet">
+      <div class="cardHead">
+        <div><div class="kicker">04</div><h2>SUBNETTING TOOL</h2><small>IPv4 · Network · Broadcast · Hosts</small></div>
+        <div class="dot red"></div>
+      </div>
+      <div class="subInputGrid">
+        <label class="fieldLabel">IPv4<input id="subnetIp" value="192.168.1.77" aria-label="IPv4 para subnetting"></label>
+        <label class="fieldLabel">PREFIX<input id="subnetPrefix" type="number" min="0" max="32" value="27"></label>
+        <button class="calcBtn" id="subnetCalc">CALCULATE</button>
+      </div>
+      <div class="blockVisual" id="blockVisual"></div>
+      <div class="subResults" id="subResults"></div>
+      <div class="subSteps" id="subSteps"></div>
+    </article>
+  </section>
+
+  <section class="footerCallout">
+    <div>
+      <strong>¿Quieres aprender el concepto antes de calcular?</strong>
+      <span>Vuelve al CIDR Visualizer para explorar IPv4 e IPv6 de forma guiada.</span>
+    </div>
+    <a href="https://alfredosan-eng.github.io/CIDR-Visualizer/" target="_blank" rel="noopener">OPEN CIDR VISUALIZER ↗</a>
+  </section>
+</main>
+
+<footer><span>SUBNETTING TOOLS</span><span>IPv4 · CIDR · BINARY · MASKS · SUBNETTING</span><span>MADE WITH ♥ BY ALFREDO SAN</span></footer>
+<script src="app.js"></script>
+</body>
+</html>
