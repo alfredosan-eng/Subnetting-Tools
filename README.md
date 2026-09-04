@@ -1,3 +1,10 @@
+<p align="center">
+  <a href="https://alfredosan-eng.github.io/Subnetting-Tools/" target="_blank">
+    <img src="https://img.shields.io/badge/🧮%20OPEN%20SUBNETTING%20TOOLS-4285F4?style=for-the-badge&labelColor=202124" alt="Open Subnetting Tools">
+  </a>
+</p>
+
+
 # Subnetting Tools
 
 Página complementaria de **CIDR Visualizer**, enfocada en cuatro herramientas prácticas de IPv4: explorar prefijos, entender la frontera `/`, convertir decimal/binario y resolver subnetting.
